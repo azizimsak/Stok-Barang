@@ -19,8 +19,10 @@ echo "<table border='1'>
 <th>Vendor</th>
 <th>Kain</th>
 <th>Warna</th>
+<th>Type Dudukan</th>
 <th>Kaki</th>
 <th>Nama Supir</th>
+<th>Keperluan</th>
 </tr>";
 
 while($row = mysqli_fetch_array($result)) {
@@ -35,8 +37,10 @@ while($row = mysqli_fetch_array($result)) {
   echo "<td>" . $row['vendor'] . "</td>";
   echo "<td>" . $row['kain'] . "</td>";
   echo "<td>" . $row['warna'] . "</td>";
+  echo "<td>" . $row['type_dudukan'] . "</td>";
   echo "<td>" . $row['kaki'] . "</td>";
   echo "<td>" . $row['nama_supir'] . "</td>";
+  echo "<td>" . $row['keperluan'] . "</td>";
   echo "</tr>";
 }
 echo "</table>";

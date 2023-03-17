@@ -43,14 +43,17 @@ $result = mysqli_query($conn, $sql);
       <th>Vendor</th>
       <th>Kain</th>
       <th>Warna</th>
+      <th>Type Dudukan</th>
       <th>Kaki</th>
       <th>Nama Supir</th>
+      <th>Keperluan</th>
       <th></th>
     </tr>
   </thead>
   <tbody>
     <?php while($row = mysqli_fetch_array($result)) { ?>
     <tr>
+      <td><?php echo $row['operator']; ?></td>
       <td><?php echo $row['tanggal_masuk']; ?></td>
       <td><?php echo $row['jam_masuk']; ?></td>
       <td><?php echo $row['nama_produk']; ?></td>
@@ -61,8 +64,10 @@ $result = mysqli_query($conn, $sql);
       <td><?php echo $row['vendor']; ?></td>
       <td><?php echo $row['kain']; ?></td>
       <td><?php echo $row['warna']; ?></td>
+      <td><?php echo $row['type_dudukan']; ?></td>
       <td><?php echo $row['kaki']; ?></td>
       <td><?php echo $row['nama_supir']; ?></td>
+      <td><?php echo $row['keperluan']; ?></td>
       <td><a href="#" class="btn btn-primary btn-sm">Edit</a></td>
     </tr>
     <?php } ?>

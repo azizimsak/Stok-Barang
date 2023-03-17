@@ -1,9 +1,9 @@
 <?php
 //konfigurasi koneksi database
 $servername = "localhost";
-$username = "ajegmebe_kantor";
-$password = "@736Padamu";
-$dbname = "ajegmebe_office";
+$username = "azizdev";
+$password = "4736Padamu";
+$dbname = "office";
 
 // membuat koneksi
 $conn = mysqli_connect($servername, $username, $password, $dbname);
