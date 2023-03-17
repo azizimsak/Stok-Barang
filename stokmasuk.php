@@ -24,10 +24,12 @@ VALUES ('$operator', '$tanggal_masuk', '$jam_masuk', '$nama_produk', '$kode_prod
 
 if (mysqli_query($conn, $sql)) {
   echo "<script>alert('Data berhasil disimpan');</script>";
+  header("Location: sukses.html");
 } else {
   echo "<script>alert('Data gagal disimpan');</script>";
-  echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+  header("Location: gagal.html");
 }
+
 
 mysqli_close($conn);
 ?>
