@@ -1,11 +1,118 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Contoh Tampilan Tabel</title>
-  </head>
-  <body>
-    <div>
-      <?php include 'penampildata.php'; ?>
-    </div>
-  </body>
+<head>
+	<title>Data Produk</title>
+	<style>
+
+body {
+    background-color: #f2f2f2;
+    font-family: Arial, sans-serif;
+}
+
+h1 {
+    text-align: center;
+    margin-top: 50px;
+    margin-bottom: 30px;
+}
+
+table {
+    margin: 0 auto;
+    border-collapse: collapse;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+thead {
+    background-color: #f5f5f5;
+    font-weight: bold;
+}
+
+th, td {
+    padding: 12px 15px;
+    text-align: center;
+    border-bottom: 1px solid #ccc;
+}
+
+th:first-child, td:first-child {
+  border-left: 1px solid #ccc;
+}
+
+th:last-child, td:last-child {
+border-right: 1px solid #ccc;
+}
+
+tr:hover {
+background-color: #f5f5f5;
+}
+   
+
+    </style>
+</head>
+<body>
+	<h1>Data Produk</h1>
+	<table>
+		<thead>
+			<tr>
+				<th>No</th>
+				<th>Operator</th>
+				<th>Tanggal Masuk</th>
+				<th>Nama Produk</th>
+				<th>Kode Produk</th>
+				<th>Jenis Sofa</th>
+				<th>Jumlah Produk</th>
+				<th>Vendor</th>
+				<th>Kain</th>
+				<th>Warna</th>
+				<th>Type Dudukan</th>
+				<th>Kaki</th>
+				<th>Nama Supir</th>
+				<th>Keperluan</th>
+			</tr>
+		</thead>
+		<tbody>
+			<?php
+			// Membuat koneksi ke database
+			$koneksi = mysqli_connect("localhost", "ajegmebe_kantor", "@736Padamu", "ajegmebe_office");
+
+			// Mengecek koneksi
+			if (mysqli_connect_errno()) {
+				echo "Koneksi database gagal : " . mysqli_connect_error();
+			}
+
+			// Query untuk mengambil data dari tabel produk
+			$query = "SELECT * FROM produk";
+
+			// Menjalankan query
+			$hasil = mysqli_query($koneksi, $query);
+
+			// Nomor urut awal
+			$no = 1;
+
+			// Menampilkan data
+			while ($data = mysqli_fetch_assoc($hasil)) {
+				echo "<tr>";
+				echo "<td>" . $no++ . "</td>";
+				echo "<td>" . $data['operator'] . "</td>";
+				echo "<td>" . $data['tanggal_masuk'] . "</td>";
+				echo "<td>" . $data['nama_produk'] . "</td>";
+				echo "<td>" . $data['kode_produk'] . "</td>";
+				echo "<td>" . $data['jenis_sofa'] . "</td>";
+				echo "<td>" . $data['jumlah_produk'] . "</td>";
+				echo "<td>" . $data['vendor'] . "</td>";
+				echo "<td>" . $data['kain'] . "</td>";
+				echo "<td>" . $data['warna'] . "</td>";
+				echo "<td>" . $data['type_dudukan'] . "</td>";
+				echo "<td>" . $data['kaki'] . "</td>";
+				echo "<td>" . $data['nama_supir'] . "</td>";
+				echo "<td>" . $data['keperluan'] . "</td>";
+				echo "</tr>";
+			}
+
+			// Menutup koneksi database
+			mysqli_close($koneksi);
+			?>
+		</tbody>
+	</table>
+</body>
 </html>

@@ -1,0 +1,122 @@
+<?php
+// Koneksi ke database
+$servername = "localhost";
+$username = "ajegmebe_kantor";
+$password = "@736Padamu";
+$dbname = "ajegmebe_office";
+
+$koneksi = mysqli_connect($servername, $username, $password, $dbname);
+if (!$koneksi) {
+  die("Koneksi gagal: " . mysqli_connect_error());
+}
+?>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+	<title>Formulir Stok Keluar</title> <head>
+    <link rel="stylesheet" type="text/css" href="style.css" />
+
+</head>
+<body>
+	<h2>Formulir Stok Keluar</h2>
+	<form method="post" action="stokkeluar.php">
+        <label for="operator">Operator:</label>
+      <select id="operator" name="operator">
+        <option value="">-- Nama Operator --</option>
+        <option value="okta">Okta</option>
+        <option value="ratna">Ratna</option>
+        <option value="dewi">Dewi</option>
+        <option value="aziz">Aziz</option>
+      </select>
+
+      <label for="date">Tanggal Keluar:</label>
+      <input type="date" id="date" name="date" required />
+
+      <label for="jam-keluar">Jam Keluar:</label>
+      <input type="time" id="jam-keluar" name="jam-keluar" required />
+
+	  <label for="nama_produk">Nama Produk:</label>
+	  <select name="nama_produk" id="nama_produk">
+		  <?php
+		  $query = "SELECT * FROM produk";
+		  $hasil = mysqli_query($koneksi, $query);
+		  while ($data = mysqli_fetch_assoc($hasil)) {
+			  echo "<option value='" . $data['id'] . "'>" . $data['nama_produk'] . "</option>";
+		  }
+		  ?>
+	  </select>
+	  
+	  <label for="jenis_sofa">Jenis Sofa:</label>
+	  <select name="jenis_sofa" id="jenis_sofa">
+		  <?php
+		  $query = "SELECT * FROM produk";
+		  $hasil = mysqli_query($koneksi, $query);
+		  while ($data = mysqli_fetch_assoc($hasil)) {
+			  echo "<option value='" . $data['id'] . "'>" . $data['jenis_sofa'] . "</option>";
+		  }
+		  ?>
+	  </select>
+	  
+	  <label for="pilihan_kain">Pilihan Kain:</label>
+	  <select name="pilihan_kain" id="pilihan_kain">
+		  <?php
+		  $query = "SELECT * FROM produk";
+		  $hasil = mysqli_query($koneksi, $query);
+		  while ($data = mysqli_fetch_assoc($hasil)) {
+			  echo "<option value='" . $data['id'] . "'>" . $data['kain'] . "</option>";
+		  }
+		  ?>
+	  </select>
+	  
+	  <label for="warna">Warna:</label>
+	  <select name="warna" id="warna">
+		  <?php
+		  $query = "SELECT * FROM produk";
+		  $hasil = mysqli_query($koneksi, $query);
+		  while ($data = mysqli_fetch_assoc($hasil)) {
+			  echo "<option value='" . $data['id'] . "'>" . $data['warna'] . "</option>";
+		  }
+		  ?>
+	  </select>
+	  
+	  <label for="type_dudukan">Type Dudukan:</label>
+	  <select name="type_dudukan" id="type_dudukan">
+		<?php
+		 $query = "SELECT * FROM produk";
+		 $hasil = mysqli_query($koneksi, $query);
+		 while ($data = mysqli_fetch_assoc($hasil)) {
+			 echo "<option value='" . $data['id'] . "'>" . $data['type_dudukan'] . "</option>";
+		 }
+		 ?>
+		</select>
+		
+		<label for="kaki">Kaki:</label>
+		<select name="kaki" id="kaki">
+		<?php
+		 $query = "SELECT * FROM produk";
+		 $hasil = mysqli_query($koneksi, $query);
+		 while ($data = mysqli_fetch_assoc($hasil)) {
+			 echo "<option value='" . $data['id'] . "'>" . $data['kaki'] . "</option>";
+		 }
+		 ?>
+		</select>
+	  
+            
+                <label for="jumlah">Jumlah:</label><br>
+                <input type="number" name="jumlah" id="jumlah"><br><br>
+
+                <label for="supir-name">Nama Supir:</label>
+                <input type="text" id="supir-name" name="supir-name" required />
+          
+                <label for="cust-name">Nama Pelanggan:</label>
+                <input type="text" id="cust-name" name="cust-name" required />
+            
+                <div class="container">
+					<button type="submit">Kirim</button>
+					<button type="reset">Hapus</button>
+				  </div>
+            </form>
+        </body>
+        </html>            
